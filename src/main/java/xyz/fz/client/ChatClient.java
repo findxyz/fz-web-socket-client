@@ -39,18 +39,21 @@ public class ChatClient {
         final Socket socket = IO.socket(BaseProperties.get("chat.server.url"), options);
 
         socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
+            @Override
             public void call(Object... args) {
                 System.out.println("socket connected..." + socket.id() + "#" + socket.toString());
             }
         });
 
         socket.on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
+            @Override
             public void call(Object... args) {
                 System.out.println("socket disconnected..." + socket.toString());
             }
         });
 
         socket.on(Socket.EVENT_MESSAGE, new Emitter.Listener() {
+            @Override
             public void call(Object... args) {
                 for (Object message : args) {
                     String deMessage = null;
